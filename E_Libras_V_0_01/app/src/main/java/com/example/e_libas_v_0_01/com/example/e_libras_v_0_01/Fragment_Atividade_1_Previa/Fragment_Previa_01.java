@@ -42,8 +42,6 @@ public class Fragment_Previa_01 extends Fragment implements View.OnClickListener
             transaction.replace(R.id.fragment_container_previa_Atividade_01,fragmentPrevia02);
             transaction.commit();
 
-
-
         }
 
     }
