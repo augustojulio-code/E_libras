@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentTransaction;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -35,8 +36,13 @@ public class Fragment_Previa_02 extends Fragment implements View.OnClickListener
     {
         if (view == proximo)
         {
-            getActivity().finish();
-            startActivity(new Intent(getActivity(), Atividade_01.class));
+            Fragment_Previa_03 fragmentPrevia03 = new Fragment_Previa_03();
+
+            FragmentTransaction transaction = getFragmentManager().beginTransaction();
+            transaction.replace(R.id.fragment_container_previa_Atividade_01,fragmentPrevia03);
+            transaction.commit();
+
+
         }
     }
 }
