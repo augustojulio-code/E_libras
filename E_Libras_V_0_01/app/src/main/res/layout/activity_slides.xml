@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ActivitySlides"
+    android:background="@drawable/bgmain">
+
+    <android.support.v4.view.ViewPager
+        android:id="@+id/slideview"
+        android:layout_width="match_parent"
+        android:layout_height="661dp">
+
+    </android.support.v4.view.ViewPager>
+
+
+    <LinearLayout
+        android:id="@+id/dotlayout"
+        android:layout_width="wrap_content"
+        android:layout_height="70dp"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:orientation="horizontal"/>
+
+    <Button
+        android:id="@+id/btnproximoslide"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@id/dotlayout"
+        android:layout_alignEnd="@+id/slideview"
+        android:layout_alignBottom="@id/dotlayout"
+        android:layout_marginLeft="114dp"
+        android:layout_marginEnd="3dp"
+        android:layout_marginBottom="0dp"
+        android:background="@color/common_google_signin_btn_text_dark_disabled"
+        android:text="Proximo" />
+
+    <Button
+        android:id="@+id/btnvoltarslide"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@id/dotlayout"
+        android:background="@color/common_google_signin_btn_text_dark_disabled"
+        android:text=" Voltar "
+        android:visibility="invisible" />
+
+
+</RelativeLayout>

@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent" android:layout_height="match_parent" android:orientation="vertical">
+
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/corqualquer">
+        <TextView
+            android:text="Dashboard"
+            android:textSize="35dp"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:textStyle="bold"
+            android:layout_marginTop="15dp"
+            android:textColor="#000"/>
+    </LinearLayout>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        >
+
+
+            <ProgressBar
+                android:id="@+id/dashboardpb"
+                android:layout_width="match_parent"
+                android:layout_height="30dp"
+                style="@style/Widget.AppCompat.ProgressBar.Horizontal"
+                android:max="1000"/>
+
+
+
+            <TextView
+                android:id="@+id/dashboardpontos"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:text="Pontos"
+                android:textSize="30dp"
+                android:gravity="left"
+                android:textColor="#000"
+                />
+
+        <TextView
+            android:id="@+id/dashboardniveluser"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="nivel"
+            android:textSize="30dp"
+            android:gravity="left"
+            android:textColor="#000"
+            />
+
+    </LinearLayout>
+
+    </ScrollView>
+
+</LinearLayout>

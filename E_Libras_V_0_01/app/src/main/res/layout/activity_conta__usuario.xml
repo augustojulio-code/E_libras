@@ -1,0 +1,157 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Conta_Usuario"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/corqualquer">
+
+        <TextView
+            android:text="Informações Pessoais"
+            android:textSize="35dp"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:textStyle="bold"
+            android:layout_marginTop="15dp"
+            android:textColor="#000"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/corqualquer">
+
+        <ImageView
+            android:id="@+id/btnimageview"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:background="@drawable/ic_keyboard_arrow_left_black_24dp"/>
+
+    </LinearLayout>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Geral"
+                android:textSize="30dp"
+                android:layout_gravity="center"
+                android:textColor="#000"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginTop="15dp"
+                android:layout_gravity="center">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Nome: "
+                    android:textSize="20dp"
+                    android:textColor="#000"/>
+
+                <EditText
+                    android:id="@+id/txtperfilnome"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:hint="Nome Usuario"
+                    android:textColor="#000"
+                    android:textSize="15dp"/>
+
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginTop="15dp"
+                android:layout_gravity="center">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Email:  "
+                    android:textSize="20dp"
+                    android:textColor="#000"/>
+
+                <EditText
+                    android:id="@+id/txtperfilemail"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:hint="Email Usuario"
+                    android:textColor="#000"
+                    android:textSize="15dp"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginTop="15dp"
+                android:layout_gravity="center">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Apelido: "
+                    android:textSize="20dp"
+                    android:textColor="#000"/>
+
+                <EditText
+                    android:id="@+id/txtperfilapelido"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:hint="Apelido Usuario"
+                    android:textColor="#000"
+                    android:textSize="15dp"/>
+
+            </LinearLayout>
+
+
+            <Button
+                android:id="@+id/btnperfilusuario"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Alterar Cadastro"
+                android:layout_gravity="center"
+                android:layout_marginTop="20dp"
+                android:background="@color/corqualquer"
+                android:textStyle="bold"
+                android:fontFamily="casual"
+                android:textSize="18sp"/>
+
+            <Button
+                android:id="@+id/btndeletarconta"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Deletar Conta"
+                android:layout_gravity="center"
+                android:layout_marginTop="20dp"
+                android:background="@color/colorAccent"
+                android:textStyle="bold"
+                android:fontFamily="casual"
+                android:textSize="18sp"/>
+
+        </LinearLayout>
+
+    </ScrollView>
+
+</LinearLayout>

@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">E Libras</string>
+    <string name="title_activity_main_fragment_menu">E-Libras</string>
+    <string name="title_home">Home</string>
+    <string name="title_dashboard">Dashboard</string>
+    <string name="title_notifications">Notifications</string>
+    <string name="title_ranking">Ranking</string>
+    <string name="title_config">Configurações</string>
+    <string name="title_info">Informações</string>
+</resources>
