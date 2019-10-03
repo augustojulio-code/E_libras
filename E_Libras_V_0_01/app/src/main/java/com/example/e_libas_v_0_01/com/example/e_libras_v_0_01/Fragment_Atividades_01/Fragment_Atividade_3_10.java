@@ -9,14 +9,18 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.example.e_libas_v_0_01.R;
+import com.example.e_libas_v_0_01.com.example.e_libras_v_0_01.Evento_Botao.Manipula_Button;
 
 public class Fragment_Atividade_3_10 extends Fragment implements View.OnClickListener
 {
-    Button proximo_at3, exibir_at3;
+    Button opcao_01,opcao_02,opcao_03,opcao_04;
     int pontos;
+    ImageView proximo;
+    Manipula_Button evento_click = new Manipula_Button();
 
     @Nullable
     @Override
@@ -24,11 +28,17 @@ public class Fragment_Atividade_3_10 extends Fragment implements View.OnClickLis
     {
         View view = inflater.inflate(R.layout.fragment_atividade_3_10,container,false);
 
-        proximo_at3 = view.findViewById(R.id.btn_atividade_3_10);
-        exibir_at3 = view.findViewById(R.id.btn_atividade_3_10_exibir);
+        proximo = view.findViewById(R.id.btn_proximo03_atividade01);
+        opcao_01 = view.findViewById(R.id.btn_atividade1_3_10_opcao1);
+        opcao_02 = view.findViewById(R.id.btn_atividade1_3_10_opcao2);
+        opcao_03 = view.findViewById(R.id.btn_atividade1_3_10_opcao3);
+        opcao_04 = view.findViewById(R.id.btn_atividade1_3_10_opcao4);
 
-        proximo_at3.setOnClickListener(this);
-        exibir_at3.setOnClickListener(this);
+        proximo.setOnClickListener(this);
+        opcao_01.setOnClickListener(this);
+        opcao_02.setOnClickListener(this);
+        opcao_03.setOnClickListener(this);
+        opcao_04.setOnClickListener(this);
 
 
 
@@ -43,12 +53,14 @@ public class Fragment_Atividade_3_10 extends Fragment implements View.OnClickLis
         Bundle bundle_at3= getArguments();
 
         pontos = bundle_at3.getInt("ponto_at2");
+
+        proximo.setEnabled(false);
     }
 
     @Override
     public void onClick(View view)
     {
-        if (view == proximo_at3)
+        if (view == proximo)
         {
             pontos = pontos + 3;
 
@@ -64,9 +76,25 @@ public class Fragment_Atividade_3_10 extends Fragment implements View.OnClickLis
             transaction.replace(R.id.fragment_container_Atividade_01,fragment_atividade_4_10);
             transaction.commit();
         }
-        if (view == exibir_at3)
+        if (view == opcao_01)
         {
-            Toast.makeText(getActivity(),""+pontos,Toast.LENGTH_LONG).show();
+           evento_click.TrocarCorBotao1(opcao_01,opcao_02,opcao_03,opcao_04);
+           evento_click.Desabilitar_botao(opcao_01,opcao_02,opcao_03,opcao_04,proximo);
+        }
+        if (view == opcao_02)
+        {
+            evento_click.TrocarCorBotao1(opcao_01,opcao_02,opcao_03,opcao_04);
+            evento_click.Desabilitar_botao(opcao_01,opcao_02,opcao_03,opcao_04,proximo);
+        }
+        if (view == opcao_03)
+        {
+            evento_click.TrocarCorBotao1(opcao_01,opcao_02,opcao_03,opcao_04);
+            evento_click.Desabilitar_botao(opcao_01,opcao_02,opcao_03,opcao_04,proximo);
+        }
+        if (view == opcao_04)
+        {
+            evento_click.TrocarCorBotao1(opcao_01,opcao_02,opcao_03,opcao_04);
+            evento_click.Desabilitar_botao(opcao_01,opcao_02,opcao_03,opcao_04,proximo);
         }
 
     }

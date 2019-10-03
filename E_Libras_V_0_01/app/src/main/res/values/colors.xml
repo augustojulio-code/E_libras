@@ -5,4 +5,6 @@
     <color name="colorAccent">#D81B60</color>
     <color name="corqualquer">#30A9D9</color>
     <color name="colorTransparentWhite">#cccccc</color>
+    <color name="colorAcerto">#18D377</color>
+    <color name="colorErrado">#FF0C3E</color>
 </resources>

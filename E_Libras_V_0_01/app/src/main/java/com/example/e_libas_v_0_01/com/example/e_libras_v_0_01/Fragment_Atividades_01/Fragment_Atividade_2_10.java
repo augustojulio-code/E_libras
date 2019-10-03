@@ -9,22 +9,30 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.example.e_libas_v_0_01.R;
+import com.example.e_libas_v_0_01.com.example.e_libras_v_0_01.Evento_Botao.Manipula_Button;
 
 public class Fragment_Atividade_2_10 extends Fragment implements View.OnClickListener
 {
-    Button proximo, exibir;
+    Button opcao_01, opcao_02,opcao_03,opcao_04;
     int pontos;
+    ImageView proximo;
+    Manipula_Button evento_click = new Manipula_Button();
+
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState)
     {
         View view = inflater.inflate(R.layout.fragment_atividade_2_10,container,false);
 
-        proximo = view.findViewById(R.id.btn_atividade_2_10);
-        exibir = view.findViewById(R.id.btn_atividade_2_10_exibir);
+        proximo = view.findViewById(R.id.btn_proximo02_atividade01);
+        opcao_01= view.findViewById(R.id.btn_atividade1_2_10_opcao1);
+        opcao_02= view.findViewById(R.id.btn_atividade1_2_10_opcao2);
+        opcao_03= view.findViewById(R.id.btn_atividade1_2_10_opcao3);
+        opcao_04= view.findViewById(R.id.btn_atividade1_2_10_opcao4);
 
         Bundle bundle_at2 = getArguments();
 
@@ -33,7 +41,10 @@ public class Fragment_Atividade_2_10 extends Fragment implements View.OnClickLis
 
 
         proximo.setOnClickListener(this);
-        exibir.setOnClickListener(this);
+        opcao_01.setOnClickListener(this);
+        opcao_02.setOnClickListener(this);
+        opcao_03.setOnClickListener(this);
+        opcao_04.setOnClickListener(this);
 
 
 
@@ -63,13 +74,34 @@ public class Fragment_Atividade_2_10 extends Fragment implements View.OnClickLis
             transaction.commit();
 
         }
-        if (view == exibir)
+        if (view == opcao_01)
         {
-            Toast.makeText(getContext(),""+pontos,Toast.LENGTH_LONG).show();
+            evento_click.TrocarCorBotao1(opcao_01,opcao_02,opcao_03,opcao_04);
+            evento_click.Desabilitar_botao(opcao_01,opcao_02,opcao_03,opcao_04,proximo);
+        }
+        if (view == opcao_02)
+        {
+            evento_click.TrocarCorBotao1(opcao_01,opcao_02,opcao_03,opcao_04);
+            evento_click.Desabilitar_botao(opcao_01,opcao_02,opcao_03,opcao_04,proximo);
+        }
+        if (view == opcao_03)
+        {
+            evento_click.TrocarCorBotao1(opcao_01,opcao_02,opcao_03,opcao_04);
+            evento_click.Desabilitar_botao(opcao_01,opcao_02,opcao_03,opcao_04,proximo);
+        }
+        if (view == opcao_04)
+        {
+            evento_click.TrocarCorBotao1(opcao_01,opcao_02,opcao_03,opcao_04);
+            evento_click.Desabilitar_botao(opcao_01,opcao_02,opcao_03,opcao_04,proximo);
         }
     }
 
+    @Override
+    public void onStart()
+    {
+        super.onStart();
 
-
+        proximo.setEnabled(false);
+    }
 }
 

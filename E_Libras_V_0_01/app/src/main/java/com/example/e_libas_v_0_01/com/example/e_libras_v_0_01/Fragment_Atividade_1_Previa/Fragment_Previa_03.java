@@ -9,12 +9,13 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ImageView;
 
 import com.example.e_libas_v_0_01.R;
 
 public class Fragment_Previa_03 extends Fragment implements View.OnClickListener
 {
-    Button proximo;
+   ImageView proximo;
 
     @Nullable
     @Override
