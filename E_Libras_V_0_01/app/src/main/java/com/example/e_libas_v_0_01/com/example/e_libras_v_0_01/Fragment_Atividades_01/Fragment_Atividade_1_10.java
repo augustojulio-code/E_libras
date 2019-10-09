@@ -1,5 +1,6 @@
 package com.example.e_libas_v_0_01.com.example.e_libras_v_0_01.Fragment_Atividades_01;
 
+import android.app.Dialog;
 import android.graphics.Color;
 import android.graphics.CornerPathEffect;
 import android.graphics.drawable.Drawable;
@@ -71,7 +72,6 @@ public class Fragment_Atividade_1_10 extends Fragment implements View.OnClickLis
             //Desabilitandos os botões após click
 
             evento_click.Desabilitar_botao(opcao_01,opcao_02,opcao_03,opcao_04,proximo);
-
 
         }
         if (view == opcao_02)

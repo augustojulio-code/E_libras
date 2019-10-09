@@ -9,8 +9,10 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
 import com.example.e_libas_v_0_01.Atividade_01;
 import com.example.e_libas_v_0_01.MainActivity;
 import com.example.e_libas_v_0_01.Previa_Atividade_1;
@@ -36,6 +38,7 @@ public class MainFragmentHome extends Fragment implements View.OnClickListener
 
     Button atividade;
 
+
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState)
@@ -47,6 +50,7 @@ public class MainFragmentHome extends Fragment implements View.OnClickListener
         nickname = (TextView) view.findViewById(R.id.txthomeusuario);
 
         Button botao = (Button) view.findViewById(R.id.botao123);
+
 
          atividade = view.findViewById(R.id.botao_atividade);
 
