@@ -21,7 +21,7 @@ import com.example.e_libas_v_0_01.com.example.e_libras_v_0_01.Evento_Botao.Manip
 public class Fragment_Atividade_1_10 extends Fragment implements View.OnClickListener
 {
     Button opcao_01,opcao_02,opcao_03,opcao_04;
-    int pontos = 2;
+    int pontos = 0;
     ImageView proximo;
     Manipula_Button evento_click = new Manipula_Button();
 
@@ -93,6 +93,8 @@ public class Fragment_Atividade_1_10 extends Fragment implements View.OnClickLis
         }
         if (view== opcao_04)
         {
+            pontos = pontos + 50;
+
             evento_click.TrocarCorBotao4(opcao_01,opcao_02,opcao_03,opcao_04);
 
             evento_click.Desabilitar_botao(opcao_01,opcao_02,opcao_03,opcao_04,proximo);

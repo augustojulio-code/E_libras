@@ -12,7 +12,15 @@ import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.example.e_libas_v_0_01.R;
+import com.example.e_libas_v_0_01.com.example.e_libras_v_0_01.Evento_Botao.Evento_Firebase;
 import com.example.e_libas_v_0_01.com.example.e_libras_v_0_01.Evento_Botao.Manipula_Button;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 public class Fragment_Atividade_5_10 extends Fragment implements View.OnClickListener
 {
@@ -20,6 +28,10 @@ public class Fragment_Atividade_5_10 extends Fragment implements View.OnClickLis
     ImageView proximo;
     int pontos;
     Manipula_Button evento_click = new Manipula_Button();
+    Evento_Firebase updatescore = new Evento_Firebase();
+    DatabaseReference databaseReference;
+    FirebaseAuth firebaseAuth;
+    int retorno_pontos;
 
     @Nullable
     @Override
@@ -53,6 +65,28 @@ public class Fragment_Atividade_5_10 extends Fragment implements View.OnClickLis
         pontos = bundle_at5.getInt("pontos_at4");
 
         proximo.setEnabled(false);
+
+        firebaseAuth = FirebaseAuth.getInstance();
+        final FirebaseUser user = firebaseAuth.getCurrentUser();
+
+        databaseReference = FirebaseDatabase.getInstance().getReference("Userscore").child(user.getUid());
+
+        databaseReference.addValueEventListener(new ValueEventListener()
+        {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot)
+            {
+                String sponto= dataSnapshot.child("pontos").getValue().toString();
+
+                retorno_pontos = Integer.parseInt(sponto);
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError)
+            {
+
+            }
+        });
     }
 
     @Override
@@ -60,7 +94,9 @@ public class Fragment_Atividade_5_10 extends Fragment implements View.OnClickLis
     {
         if (view == proximo)
         {
+            updatescore.Update_pontos(retorno_pontos,pontos);
             getActivity().finish();
+
         }
         if (view == opcao_01)
         {
@@ -74,6 +110,8 @@ public class Fragment_Atividade_5_10 extends Fragment implements View.OnClickLis
         }
         if (view == opcao_03)
         {
+            pontos = pontos +50;
+
             evento_click.TrocarCorBotao3(opcao_01,opcao_02,opcao_03,opcao_04);
             evento_click.Desabilitar_botao(opcao_01,opcao_02,opcao_03,opcao_04,proximo);
         }
@@ -83,4 +121,6 @@ public class Fragment_Atividade_5_10 extends Fragment implements View.OnClickLis
             evento_click.Desabilitar_botao(opcao_01,opcao_02,opcao_03,opcao_04,proximo);
         }
     }
+
+
 }

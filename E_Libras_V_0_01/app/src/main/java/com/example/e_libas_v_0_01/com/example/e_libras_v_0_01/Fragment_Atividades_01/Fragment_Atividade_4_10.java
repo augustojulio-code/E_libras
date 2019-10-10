@@ -64,7 +64,6 @@ public class Fragment_Atividade_4_10 extends Fragment implements View.OnClickLis
     {
         if (view == proximo)
         {
-            pontos = pontos + 2;
             Bundle bundle_at4_proximo= new Bundle();
 
             bundle_at4_proximo.putInt("pontos_at4", pontos);
@@ -83,6 +82,8 @@ public class Fragment_Atividade_4_10 extends Fragment implements View.OnClickLis
         }
         if (view == opcao_02)
         {
+            pontos = pontos+ 50;
+
             evento_click.TrocarCorBotao2(opcao_01,opcao_02,opcao_03,opcao_04);
             evento_click.Desabilitar_botao(opcao_01,opcao_02,opcao_03,opcao_04,proximo);
         }

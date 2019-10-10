@@ -35,7 +35,11 @@
                 android:layout_width="match_parent"
                 android:layout_height="30dp"
                 style="@style/Widget.AppCompat.ProgressBar.Horizontal"
-                android:max="1000"/>
+                android:max="1000"
+                android:layout_marginRight="50dp"
+                android:layout_marginLeft="50dp"
+                android:layout_marginTop="25dp"
+                android:progressDrawable="@drawable/custom_progress_bar"/>
 
 
 

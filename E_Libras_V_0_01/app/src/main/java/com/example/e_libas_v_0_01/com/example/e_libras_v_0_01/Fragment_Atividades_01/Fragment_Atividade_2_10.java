@@ -34,9 +34,7 @@ public class Fragment_Atividade_2_10 extends Fragment implements View.OnClickLis
         opcao_03= view.findViewById(R.id.btn_atividade1_2_10_opcao3);
         opcao_04= view.findViewById(R.id.btn_atividade1_2_10_opcao4);
 
-        Bundle bundle_at2 = getArguments();
 
-        pontos = bundle_at2.getInt("pontos");
 
 
 
@@ -57,7 +55,6 @@ public class Fragment_Atividade_2_10 extends Fragment implements View.OnClickLis
     {
         if (view == proximo)
         {
-            pontos = pontos+ 3;
 
             Bundle bundle_at2= new Bundle();
 
@@ -76,6 +73,8 @@ public class Fragment_Atividade_2_10 extends Fragment implements View.OnClickLis
         }
         if (view == opcao_01)
         {
+            pontos = pontos +50;
+
             evento_click.TrocarCorBotao1(opcao_01,opcao_02,opcao_03,opcao_04);
             evento_click.Desabilitar_botao(opcao_01,opcao_02,opcao_03,opcao_04,proximo);
         }
@@ -100,6 +99,10 @@ public class Fragment_Atividade_2_10 extends Fragment implements View.OnClickLis
     public void onStart()
     {
         super.onStart();
+
+        Bundle bundle_at2 = getArguments();
+
+        pontos = bundle_at2.getInt("pontos");
 
         proximo.setEnabled(false);
     }
