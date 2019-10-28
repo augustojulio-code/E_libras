@@ -54,7 +54,9 @@
             android:hint="Digite seu email"
             android:inputType="textEmailAddress"
             android:textAlignment="center"
-            android:textStyle="bold" />
+            android:textStyle="bold"
+            android:textColorHint="#000"
+            android:layout_marginTop="15dp"/>
 
         <EditText
             android:id="@+id/txtsenha"
@@ -65,7 +67,21 @@
             android:hint="Digite sua senha"
             android:inputType="textPassword"
             android:textAlignment="center"
-            android:textStyle="bold" />
+            android:textStyle="bold"
+            android:textColorHint="#000"
+            />
+
+        <EditText
+            android:id="@+id/txtconfirma_senha"
+            android:layout_width="207dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:fontFamily="casual"
+            android:hint="Confirme sua senha"
+            android:inputType="textPassword"
+            android:textAlignment="center"
+            android:textStyle="bold"
+            android:textColorHint="#000"/>
 
         <EditText
             android:id="@+id/txtnomecompleto"
@@ -76,14 +92,16 @@
             android:hint="Nome completo"
             android:inputType=""
             android:textAlignment="center"
-            android:textStyle="bold" />
+            android:textStyle="bold"
+            android:textColorHint="#000"/>
         <EditText
             android:id="@+id/txttelefone"
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:inputType="phone"
             android:hint="Telefone"
-            android:layout_gravity="center"/>
+            android:layout_gravity="center"
+            android:textColorHint="#000"/>
 
         <EditText
             android:id="@+id/txtapelido"
@@ -94,7 +112,8 @@
             android:hint="Apelido"
             android:inputType=""
             android:textAlignment="center"
-            android:textStyle="bold" />
+            android:textStyle="bold"
+            android:textColorHint="#000"/>
 
         <EditText
             android:id="@+id/txtnivelusuario"
@@ -121,6 +140,7 @@
             android:textColor="#000"
             android:textSize="18sp"
             android:textStyle="bold"
+            android:layout_marginTop="15dp"
             />
 
         <TextView
@@ -132,7 +152,9 @@
             android:text="Login"
             android:textColorHint="#00922D2D"
             android:textSize="18sp"
-            android:textStyle="bold" />
+            android:textStyle="bold"
+            android:layout_marginTop="10dp"
+            android:textColor="#000"/>
 
 
 

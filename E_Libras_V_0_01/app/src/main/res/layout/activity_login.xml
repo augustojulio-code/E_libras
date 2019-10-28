@@ -46,7 +46,8 @@
             android:hint="Digite seu email"
             android:inputType="textEmailAddress"
             android:textAlignment="center"
-            android:textStyle="bold" />
+            android:textStyle="bold"
+            android:textColorHint="#000"/>
 
         <EditText
             android:id="@+id/edttxtsenha"
@@ -57,7 +58,8 @@
             android:hint="Digite sua senha"
             android:inputType="textPassword"
             android:textAlignment="center"
-            android:textStyle="bold" />
+            android:textStyle="bold"
+            android:textColorHint="#000"/>
 
         <Button
             android:id="@+id/btnlogin"
@@ -67,9 +69,10 @@
             android:background="#2196F3"
             android:fontFamily="casual"
             android:text="Login"
-            android:textColor="#52D3F0"
+            android:textColor="#000"
             android:textSize="18sp"
-            android:textStyle="bold" />
+            android:textStyle="bold"
+            android:layout_marginTop="15dp" />
 
         <TextView
             android:id="@+id/txtviewsignup"
@@ -80,6 +83,21 @@
             android:text="Ainda não tem uma Conta?"
             android:textSize="14sp"
             android:textStyle="bold"
+            android:textColor="#000"
+            android:layout_marginTop="10dp"
+            />
+
+        <TextView
+            android:id="@+id/txtrecuperarsenha"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:fontFamily="casual"
+            android:text="Recuperar senha"
+            android:textSize="14sp"
+            android:textStyle="bold"
+            android:textColor="#000"
+            android:layout_marginTop="10dp"
             />
 
     </LinearLayout>

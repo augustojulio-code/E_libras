@@ -28,30 +28,26 @@ public class SlideAdapter extends PagerAdapter
 
     public  int[] slide_images =
             {
-                    R.drawable.icones,
-                    R.drawable.iconeteste,
-                    R.drawable.iconecontato
+                    R.mipmap.elibraslogo,
+                    R.mipmap.elibraslogo,
+                    R.mipmap.elibraslogo
 
             };
 
     public String[] slide_title =
             {
-                    "Mussun",
-                    "Mussun",
-                    "Mussun"
+                    "Bem vindo ao E-Libras!",
+                    "Não sabe nada sobre Libras?",
+                    "E agora o que fazer?"
             };
 
     public String[] slide_desc =
             {
-                  "Mussum Ipsum, cacilds vidis litro abertis. Nec orci ornare consequat." +
-                          "Praesent lacinia ultrices consectetur. Sed non ipsum felis." +
-                          "Nullam volutpat.",
+                  "Aqui você aprendera um pouco sobre libras, de maneira simple e interativa",
 
-                    "Mussum Ipsum, cacilds vidis litro abertis. Nec orci ornare consequat. Praesent lacinia ultrices consectetur."+
-                            "Sed non ipsum felis. Nullam volutpat risus nec leo commodo,",
+                    "Fique calmo! Afinal, esse aplicativo irá iniciar no nível básico",
 
-                    "Mussum Ipsum, cacilds vidis litro abertis. Nec orci ornare consequat. Praesent lacinia ultrices consectetur." +
-                            "Sed non ipsum felis. Nullam volutpat risus nec leo commodo, ut interdum diam laoreet."
+                    "Junte seu ânimo, sua curiosidade e vamos aprender juntos!!!"
 
 
             };

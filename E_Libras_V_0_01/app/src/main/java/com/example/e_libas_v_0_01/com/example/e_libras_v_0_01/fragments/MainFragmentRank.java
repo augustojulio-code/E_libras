@@ -57,15 +57,15 @@ public class MainFragmentRank extends Fragment
 
         /*arrayAdapter = new ArrayAdapter<String>(getActivity(), layout.simple_list_item_1,arrayList);
 
-        listar();
-
-        listView.setAdapter(arrayAdapter);*/
+        listar();*/
 
 
 
         listar();
+
 
         adapter = new listaAdapter(getActivity().getApplicationContext(),arrayList);
+
 
         return view;
 
@@ -88,9 +88,10 @@ public class MainFragmentRank extends Fragment
 
                 listarusuario= dataSnapshot.getValue(Userscore.class).toString();
 
+
                 arrayList.add(listarusuario);
 
-
+                //listView.setAdapter(arrayAdapter);
                 adapter.notifyDataSetChanged();
                 listView.setAdapter(adapter);
             }
@@ -119,7 +120,6 @@ public class MainFragmentRank extends Fragment
 
             }
         });
-
 
     }
 
@@ -151,6 +151,7 @@ public class MainFragmentRank extends Fragment
 
             return customlist;
         }
+
     }
 
 }

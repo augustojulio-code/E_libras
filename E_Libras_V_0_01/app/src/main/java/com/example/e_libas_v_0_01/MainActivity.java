@@ -29,7 +29,7 @@ import java.util.regex.Pattern;
 public class MainActivity extends AppCompatActivity implements View.OnClickListener
 {
     private Button registrar;
-    private EditText edtemail, edtsenha, edtnome,edtapelido, edtnivel,edtpontos;
+    private EditText edtemail, edtsenha, edtnome,edtapelido, edtnivel,edtpontos, edtconfirmasenha;
     private TextView txtviewLogin;
 
     private ProgressDialog progressDialog;
@@ -55,10 +55,12 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
        progressDialog = new ProgressDialog(this);
 
+
         registrar = (Button) findViewById(R.id.btnsalvar);
 
         edtemail = (EditText) findViewById(R.id.txtemail);
         edtsenha = (EditText) findViewById(R.id.txtsenha);
+        edtconfirmasenha = (EditText) findViewById(R.id.txtconfirma_senha);
 
         edtnome = (EditText) findViewById(R.id.txtnomecompleto);
         edtapelido = (EditText) findViewById(R.id.txtapelido);
@@ -84,12 +86,13 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         final String email = edtemail.getText().toString().trim();
         String senha = edtsenha.getText().toString().trim();
+        String confirma_senha = edtconfirmasenha.getText().toString().trim();
         final String nome = edtnome.getText().toString().trim();
         final String apelido = edtapelido.getText().toString().trim();
         final int nivel = Integer.parseInt(edtnivel.getText().toString().trim());
         final int pontos = Integer.parseInt(edtpontos.getText().toString().trim());
 
-        if(TextUtils.isEmpty(email) || TextUtils.isEmpty(senha) || TextUtils.isEmpty(nome) || TextUtils.isEmpty(apelido) )
+        if(TextUtils.isEmpty(email) || TextUtils.isEmpty(senha) || TextUtils.isEmpty(nome) || TextUtils.isEmpty(apelido) || TextUtils.isEmpty(confirma_senha))
         {
             Toast.makeText(this,"Preencha todos os campos",Toast.LENGTH_LONG).show();
 
@@ -109,93 +112,108 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
                if(matcher.matches())
                {
-                   progressDialog.setMessage("Registrando Usuário...");
-                   progressDialog.show();
+
+                   if (senha.length() >=6)
+                   {
+                       if (senha.equals(confirma_senha))
+                       {
+                           progressDialog.setMessage("Registrando Usuário...");
+                           progressDialog.show();
 
 
-                   firebaseAuth.createUserWithEmailAndPassword(email, senha)
-                           .addOnCompleteListener(this, new OnCompleteListener<AuthResult>()
-                           {
-                               @Override
-                               public void onComplete(@NonNull Task<AuthResult> task)
-                               {
-                                   if(task.isSuccessful())
+                           firebaseAuth.createUserWithEmailAndPassword(email, senha)
+                                   .addOnCompleteListener(this, new OnCompleteListener<AuthResult>()
                                    {
-                                       String id = firebaseAuth.getUid();
-                                       Usuario user = new Usuario();
+                                       @Override
+                                       public void onComplete(@NonNull Task<AuthResult> task)
+                                       {
+                                           if(task.isSuccessful())
+                                           {
+                                               String id = firebaseAuth.getUid();
+                                               Usuario user = new Usuario();
 
-                                       user.setNome(nome);
-                                       user.setEmail(email);
-                                       user.setApelido(apelido);
-                                       user.setIdUsuario(id);
+                                               user.setNome(nome);
+                                               user.setEmail(email);
+                                               user.setApelido(apelido);
+                                               user.setIdUsuario(id);
 
-                                       databaseReference
-                                               .child(FirebaseAuth.getInstance()
-                                                       .getCurrentUser().getUid()).setValue(user)
-                                               .addOnCompleteListener(new OnCompleteListener<Void>()
-                                               {
-                                                   @Override
-                                                   public void onComplete(@NonNull Task<Void> task)
-                                                   {
-                                                       if (task.isSuccessful())
+                                               databaseReference
+                                                       .child(FirebaseAuth.getInstance()
+                                                               .getCurrentUser().getUid()).setValue(user)
+                                                       .addOnCompleteListener(new OnCompleteListener<Void>()
                                                        {
-
-                                                           Userscore score = new Userscore();
-
-                                                           score.setNivel(nivel);
-                                                           score.setPontos(pontos);
-                                                           score.setApelido(apelido);
-
-                                                           FirebaseDatabase.getInstance().getReference("Userscore")
-                                                                   .child(FirebaseAuth.getInstance().getCurrentUser()
-                                                                           .getUid()).setValue(score).addOnCompleteListener(new OnCompleteListener<Void>()
+                                                           @Override
+                                                           public void onComplete(@NonNull Task<Void> task)
                                                            {
-                                                               @Override
-                                                               public void onComplete(@NonNull Task<Void> task)
+                                                               if (task.isSuccessful())
                                                                {
-                                                                   if (task.isSuccessful())
-                                                                   {
-                                                                       finish();
-                                                                       startActivity(new Intent(getApplicationContext(),MainFragmentMenu.class));
 
-                                                                       Toast.makeText(MainActivity.this,"Registrado com Sucesso", Toast.LENGTH_LONG).show();
-                                                                       progressDialog.dismiss();
-                                                                   }
-                                                                   else
+                                                                   Userscore score = new Userscore();
+
+                                                                   score.setNivel(nivel);
+                                                                   score.setPontos(pontos);
+                                                                   score.setApelido(apelido);
+
+                                                                   FirebaseDatabase.getInstance().getReference("Userscore")
+                                                                           .child(FirebaseAuth.getInstance().getCurrentUser()
+                                                                                   .getUid()).setValue(score).addOnCompleteListener(new OnCompleteListener<Void>()
                                                                    {
-                                                                       progressDialog.dismiss();
-                                                                       Toast.makeText(MainActivity.this,task.getException().getMessage(), Toast.LENGTH_LONG).show();
-                                                                   }
+                                                                       @Override
+                                                                       public void onComplete(@NonNull Task<Void> task)
+                                                                       {
+                                                                           if (task.isSuccessful())
+                                                                           {
+                                                                               finish();
+                                                                               startActivity(new Intent(getApplicationContext(),MainFragmentMenu.class));
+
+                                                                               Toast.makeText(MainActivity.this,"Registrado com Sucesso", Toast.LENGTH_LONG).show();
+                                                                               progressDialog.dismiss();
+                                                                           }
+                                                                           else
+                                                                           {
+                                                                               progressDialog.dismiss();
+                                                                               Toast.makeText(MainActivity.this,task.getException().getMessage(), Toast.LENGTH_LONG).show();
+                                                                           }
+
+                                                                       }
+                                                                   });
+
+
+
 
                                                                }
-                                                           });
+                                                               else
+                                                               {
+                                                                   progressDialog.dismiss();
+                                                                   Toast.makeText(MainActivity.this,task.getException().getMessage(), Toast.LENGTH_LONG).show();
+                                                               }
+                                                           }
+                                                       });
 
 
 
+                                               //limparCampos();
+                                           }
+                                           else
+                                           {
+                                               progressDialog.dismiss();
+                                               Toast.makeText(MainActivity.this,"Email já cadastrado", Toast.LENGTH_LONG).show();
 
-                                                       }
-                                                       else
-                                                       {
-                                                           progressDialog.dismiss();
-                                                           Toast.makeText(MainActivity.this,task.getException().getMessage(), Toast.LENGTH_LONG).show();
-                                                       }
-                                                   }
-                                               });
+                                           }
+                                       }
+                                   });
+                       }
+                       else
+                       {
+                           Toast.makeText(MainActivity.this,"A senha e a confirmação de senha devem ser iguais", Toast.LENGTH_LONG).show();
+                       }
+                   }
+                   else
+                   {
+                       Toast.makeText(MainActivity.this,"A senha deve conter 6 caracteres no minímo", Toast.LENGTH_LONG).show();
+                   }
 
-
-
-                                       //limparCampos();
-                                   }
-                                   else
-                                   {
-                                       progressDialog.dismiss();
-                                       Toast.makeText(MainActivity.this,"Email já cadastrado ou senha Fraca", Toast.LENGTH_LONG).show();
-
-                                   }
-                               }
-                           });
                }
-
                else
                    {
                        Toast.makeText(MainActivity.this,"DIgite um email Valido", Toast.LENGTH_LONG).show();
@@ -211,7 +229,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     {
         if (view == registrar)
         {
+
             registerUser();
+
         }
         if (view == txtviewLogin)
         {

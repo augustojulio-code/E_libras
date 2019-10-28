@@ -24,7 +24,10 @@
         android:text="TextView"
         android:layout_gravity="center"
         android:textSize="25dp"
-        android:layout_marginTop="15dp"/>
+        android:layout_marginTop="15dp"
+        android:textColor="#000"
+        android:textStyle="bold"
+        android:fontFamily="casual"/>
 
     <TextView
         android:id="@+id/txtlayouttexto"
@@ -33,6 +36,8 @@
         android:text="TextView"
         android:layout_marginHorizontal="50dp"
         android:textSize="20dp"
-        android:layout_marginTop="20dp" />
+        android:layout_marginTop="20dp"
+        android:textColor="#000"
+        android:fontFamily="casual"/>
 
 </LinearLayout>
