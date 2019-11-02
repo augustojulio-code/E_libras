@@ -18,6 +18,7 @@ import com.example.e_libas_v_0_01.MainActivity;
 import com.example.e_libas_v_0_01.Previa_Atividade_1;
 import com.example.e_libas_v_0_01.Previa_Atividade_2;
 import com.example.e_libas_v_0_01.Previa_Atividade_3;
+import com.example.e_libas_v_0_01.Previa_Atividade_4;
 import com.example.e_libas_v_0_01.ProfileLogin;
 import com.example.e_libas_v_0_01.R;
 import com.google.firebase.auth.FirebaseAuth;
@@ -38,7 +39,7 @@ public class MainFragmentHome extends Fragment implements View.OnClickListener
 
     TextView nickname;
 
-    Button atividade, atividade2, atividade3;
+    Button atividade, atividade2, atividade3, atividade4;
 
 
     @Nullable
@@ -57,6 +58,7 @@ public class MainFragmentHome extends Fragment implements View.OnClickListener
          atividade = view.findViewById(R.id.botao_atividade);
          atividade2 = view.findViewById(R.id.botao_atividade_2);
          atividade3 = view.findViewById(R.id.botao_atividade_3);
+         atividade4 = view.findViewById(R.id.botao_atividade_4);
 
 
         botao.setOnClickListener(new View.OnClickListener()
@@ -71,6 +73,7 @@ public class MainFragmentHome extends Fragment implements View.OnClickListener
         atividade.setOnClickListener(this);
         atividade2.setOnClickListener(this);
         atividade3.setOnClickListener(this);
+        atividade4.setOnClickListener(this);
 
 
         return view;
@@ -123,6 +126,10 @@ public class MainFragmentHome extends Fragment implements View.OnClickListener
         if (view == atividade3)
         {
             startActivity(new Intent(getActivity(), Previa_Atividade_3.class));
+        }
+        if (view == atividade4)
+        {
+            startActivity(new Intent(getActivity(), Previa_Atividade_4.class));
         }
 
     }

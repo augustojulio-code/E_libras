@@ -43,7 +43,7 @@ public class SlideAdapter extends PagerAdapter
 
     public String[] slide_desc =
             {
-                  "Aqui você aprendera um pouco sobre libras, de maneira simple e interativa",
+                  "Aqui você aprenderá um pouco sobre libras, de maneira simples e interativa",
 
                     "Fique calmo! Afinal, esse aplicativo irá iniciar no nível básico",
 
