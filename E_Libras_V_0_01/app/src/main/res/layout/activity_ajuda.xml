@@ -7,12 +7,31 @@
     android:layout_height="match_parent"
     >
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingLeft="10dp"
+        android:background="@color/corqualquer">
+
+        <TextView
+            android:text="Ajuda"
+            android:textSize="35dp"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:textStyle="bold"
+            android:layout_marginTop="15dp"
+            android:textColor="#000"
+            />
+    </LinearLayout>
+
     <TextView
         android:id="@+id/textView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Perguntas Frequentes"
-        android:textSize="30sp"
+        android:layout_gravity="center"
+        android:paddingTop="29dp"
+        android:textSize="36sp"
         tools:layout_editor_absoluteX="57dp"
         tools:layout_editor_absoluteY="29dp" />
 
@@ -34,16 +53,28 @@
                 android:layout_marginRight="10dp"
                 android:layout_marginTop="8dp"
                 android:layout_width="match_parent"
-                android:textSize="16sp"
+                android:textSize="20sp"
                 android:layout_height="wrap_content" />
 
             <ImageButton
                 android:id="@+id/expand_collapse"
                 android:layout_gravity="right|bottom"
                 android:background="@android:color/transparent"
-                android:padding="16dp"
+                android:paddingRight="16dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />
         </com.ms.square.android.expandabletextview.ExpandableTextView>
     </ScrollView>
+
+    <TextView
+        android:id="@+id/ajuda_email"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/info_ajuda"
+        android:layout_gravity="center"
+        android:paddingTop="29dp"
+        android:textSize="20sp"
+        android:textAlignment="center"
+        tools:layout_editor_absoluteX="57dp"
+        tools:layout_editor_absoluteY="29dp" />
 </LinearLayout>

@@ -1,17 +1,18 @@
 package com.example.e_libas_v_0_01;
 
 import android.annotation.SuppressLint;
-import android.app.Activity;
 import android.os.Bundle;
-import android.util.Log;
-
+import android.support.v7.app.AppCompatActivity;
+import android.text.Html;
+import android.text.method.LinkMovementMethod;
+import android.widget.TextView;
 import com.ms.square.android.expandabletextview.ExpandableTextView;
 
-public class ActivityAjuda extends Activity {
+public class ActivityAjuda extends AppCompatActivity {
 
     ExpandableTextView expandableTextView;
     String questions;
-    String reply;
+    TextView contato;
 
     @SuppressLint("WrongViewCast")
     @Override
@@ -20,11 +21,12 @@ public class ActivityAjuda extends Activity {
         setContentView(R.layout.activity_ajuda);
 
         expandableTextView = findViewById(R.id.expandable_text_view);
+        contato = findViewById(R.id.ajuda_email);
+        contato.setMovementMethod(LinkMovementMethod.getInstance());
 
         // DefaultValues
-        questions = "O que e o E-Libras?" +
-                "\nE-Libras e um aplicativo desenvolvido para o aprendizado de libras";
+        questions = getString(R.string.ajuda_pergunta1);
 
-        expandableTextView.setText(questions);
+        expandableTextView.setText(Html.fromHtml(questions));
     }
 }
