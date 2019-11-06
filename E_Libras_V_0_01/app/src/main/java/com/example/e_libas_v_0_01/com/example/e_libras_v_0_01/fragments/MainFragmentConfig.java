@@ -19,6 +19,7 @@ import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.e_libas_v_0_01.ActivityAjuda;
 import com.example.e_libas_v_0_01.Conta_Usuario;
 import com.example.e_libas_v_0_01.LoginActivity;
 import com.example.e_libas_v_0_01.MainActivity;
@@ -62,27 +63,26 @@ public class MainFragmentConfig extends Fragment
             {
                 if (position == 0)
                 {
-
                     getActivity().finish();
                     startActivity(new Intent(getActivity().getApplicationContext(), Conta_Usuario.class));
                 }
-                if (position == 1)
+                else if (position == 1)
                 {
                     startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("https://www.google.com.br")));
                 }
-                if (position == 2)
+                else if (position == 2)
                 {
                     Toast.makeText(getActivity().getApplicationContext(),"Área em Desenvolvimento",Toast.LENGTH_SHORT).show();
                 }
-                if (position == 3)
+                else if (position == 3)
                 {
                     Toast.makeText(getActivity().getApplicationContext(),"Área em Desenvolvimento",Toast.LENGTH_SHORT).show();
                 }
-                if (position == 4)
+                else if (position == 4)
                 {
-                    Toast.makeText(getActivity().getApplicationContext(),"Área em Desenvolvimento",Toast.LENGTH_SHORT).show();
+                    startActivity(new Intent(getActivity(), ActivityAjuda.class));
                 }
-                if (position == 5)
+                else if (position == 5)
                 {
                     firebaseAuth.signOut();
                     getActivity().finish();

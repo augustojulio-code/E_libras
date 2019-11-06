@@ -7,4 +7,13 @@
     <string name="title_ranking">Ranking</string>
     <string name="title_config">Configurações</string>
     <string name="title_info">Informações</string>
+
+    <string name="info_ajuda">
+        Se ainda tiver duvidas, mande um email para: <a href="elibras@gmail.com">elibras@gmail.com</a>
+    </string>
+
+    <string name="ajuda_pergunta1">
+        <![CDATA[<font size="35"><b>1 - O que e o E-Libras?</b></font><br />]]>
+        E-Libras e um aplicativo desenvolvido para o aprendizado de libras
+    </string>
 </resources>
