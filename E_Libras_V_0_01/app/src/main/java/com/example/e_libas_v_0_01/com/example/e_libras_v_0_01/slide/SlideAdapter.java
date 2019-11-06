@@ -45,7 +45,7 @@ public class SlideAdapter extends PagerAdapter
             {
                   "Aqui você aprenderá um pouco sobre libras, de maneira simples e interativa",
 
-                    "Fique calmo! Afinal, esse aplicativo irá iniciar no nível básico",
+                    "Fique calmo! Afinal, esse aplicativo iniciará no nível basico",
 
                     "Junte seu ânimo, sua curiosidade e vamos aprender juntos!!!"
 
