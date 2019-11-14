@@ -10,6 +10,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
 
@@ -27,32 +28,35 @@ import com.google.firebase.database.ValueEventListener;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
+import java.util.List;
 
 public class MainFragmentRank extends Fragment
 {
-    ListView listView;
+    ListView listView, listmedalha;
     DatabaseReference databaseReference;
-    ArrayAdapter<String> arrayAdapter;
+    //ArrayAdapter<Userscore> arrayAdapter;
     ArrayList<String> arrayList = new ArrayList<>();
     String listarusuario;
     Query query;
+    //List<Userscore> userscoreArrayList = new ArrayList<Userscore>();
+
 
     listaAdapter adapter;
+
+
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState)
     {
 
-
         final View view = inflater.inflate(R.layout.fragment_rank, container,false);
 
         listView = (ListView) view.findViewById(R.id.listviewfragment);
 
+
         //databaseReference = FirebaseDatabase.getInstance().getReference("Userscore");
 
-        query = FirebaseDatabase.getInstance().getReference("Userscore").orderByChild("pontos");
-
-
+        query = FirebaseDatabase.getInstance().getReference("Userscore").orderByChild("pontos").limitToLast(10);
 
 
         /*arrayAdapter = new ArrayAdapter<String>(getActivity(), layout.simple_list_item_1,arrayList);
@@ -121,6 +125,27 @@ public class MainFragmentRank extends Fragment
             }
         });
 
+        /*query.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot)
+            {
+                if (!dataSnapshot.exists())
+                {
+                    return;
+                }
+                for (DataSnapshot objSnapshot: dataSnapshot.getChildren())
+                {
+                    Userscore userscore = objSnapshot.getValue(Userscore.class);
+                    userscoreArrayList.add(userscore);
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });*/
+
     }
 
     class listaAdapter extends ArrayAdapter<String>
@@ -146,12 +171,13 @@ public class MainFragmentRank extends Fragment
 
             TextView apelido = customlist.findViewById(R.id.customviewapelido);
 
-
             apelido.setText(listauserscore.get(position));
 
             return customlist;
         }
 
     }
+
+
 
 }
