@@ -45,7 +45,7 @@ public class Userscore
 
     public String toString()
     {
-        return apelido+" - " + "Pontos "+pontos + " Nv."+nivel;
+        return apelido+" - "+pontos+"pt.";
     }
 
 }

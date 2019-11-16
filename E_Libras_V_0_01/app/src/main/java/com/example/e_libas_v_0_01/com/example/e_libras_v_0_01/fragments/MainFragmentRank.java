@@ -43,6 +43,8 @@ public class MainFragmentRank extends Fragment
 
     listaAdapter adapter;
 
+    int medalhasimgs[]= {R.drawable.m10,R.drawable.m9,R.drawable.m8,R.drawable.m7,R.drawable.m6,R.drawable.m5,R.drawable.m4,R.drawable.m3,R.drawable.m2,R.drawable.m1};
+
 
     @Nullable
     @Override
@@ -68,7 +70,7 @@ public class MainFragmentRank extends Fragment
         listar();
 
 
-        adapter = new listaAdapter(getActivity().getApplicationContext(),arrayList);
+        adapter = new listaAdapter(getActivity().getApplicationContext(),arrayList,medalhasimgs);
 
 
         return view;
@@ -152,13 +154,15 @@ public class MainFragmentRank extends Fragment
     {
         Context context;
         ArrayList<String> listauserscore;
-
-        listaAdapter(Context c, ArrayList<String> lista)
+        int imagens[];
+        listaAdapter(Context c, ArrayList<String> lista, int imgs[])
         {
             super(c,R.layout.listview_custom_rank,R.id.customviewapelido,lista);
 
             this.context = c;
             this.listauserscore = lista;
+            this.imagens = imgs;
+
         }
 
         @NonNull
@@ -169,8 +173,12 @@ public class MainFragmentRank extends Fragment
 
             View customlist = inflater.inflate(R.layout.listview_custom_rank,parent,false);
 
+            ImageView medalhascustom = customlist.findViewById(R.id.listmedalhas);
+
             TextView apelido = customlist.findViewById(R.id.customviewapelido);
 
+
+            medalhascustom.setImageResource(imagens[position]);
             apelido.setText(listauserscore.get(position));
 
             return customlist;
