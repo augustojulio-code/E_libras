@@ -44,9 +44,9 @@ public class Fragment_Previa_6_4 extends Fragment implements View.OnClickListene
     {
         if (view == btn_next)
         {
-            /*FragmentTransaction transaction = getFragmentManager().beginTransaction();
-            transaction.replace(R.id.fragment_container_previa_Atividade_06,new Fragment_Previa_6_3());
-            transaction.commit();*/
+            FragmentTransaction transaction = getFragmentManager().beginTransaction();
+            transaction.replace(R.id.fragment_container_previa_Atividade_06,new Fragment_Atividade_6_Splash());
+            transaction.commit();
         }
 
     }

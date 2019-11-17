@@ -20,6 +20,9 @@ public class Fragment_Atividade_3 extends Fragment implements View.OnClickListen
     Button opcao01,opcao02,opcao03,opcao04;
     ImageView img_letra,btn_next;
     Manipula_Button evento_click = new Manipula_Button();
+
+    int pontos =0;
+
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState)
@@ -74,14 +77,22 @@ public class Fragment_Atividade_3 extends Fragment implements View.OnClickListen
         }
         if (view == opcao04)
         {
+            pontos = pontos+40;
+
             evento_click.TrocarCorBotao4(opcao01,opcao02,opcao03,opcao04);
 
             evento_click.Desabilitar_botao(opcao01,opcao02,opcao03,opcao04,btn_next);
         }
         if (view == btn_next)
         {
+            Bundle bundle = new Bundle();
+            Fragment_Atividade_3_1 fragment = new Fragment_Atividade_3_1();
+            bundle.putInt("pontos", pontos);
+
+            fragment.setArguments(bundle);
+
             FragmentTransaction transaction = getFragmentManager().beginTransaction();
-            transaction.replace(R.id.fragment_container_previa_Atividade_03, new Fragment_Atividade_3_1());
+            transaction.replace(R.id.fragment_container_previa_Atividade_03, fragment);
             transaction.commit();
         }
     }

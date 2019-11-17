@@ -93,7 +93,7 @@ public class Fragment_Atividade_1_10 extends Fragment implements View.OnClickLis
         }
         if (view== opcao_04)
         {
-            pontos = pontos + 50;
+            pontos = pontos + 40;
 
             evento_click.TrocarCorBotao4(opcao_01,opcao_02,opcao_03,opcao_04);
 

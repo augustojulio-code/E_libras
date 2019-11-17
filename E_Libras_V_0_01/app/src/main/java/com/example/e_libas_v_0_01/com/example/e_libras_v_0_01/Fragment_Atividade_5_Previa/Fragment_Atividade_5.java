@@ -17,9 +17,11 @@ import com.example.e_libas_v_0_01.com.example.e_libras_v_0_01.Fragment_Atividade
 
 public class Fragment_Atividade_5 extends Fragment implements View.OnClickListener
 {
+    int pontos =0;
     Button opcao01,opcao02,opcao03,opcao04;
     ImageView img_letra,btn_next;
     Manipula_Button evento_click = new Manipula_Button();
+
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState)
@@ -68,6 +70,8 @@ public class Fragment_Atividade_5 extends Fragment implements View.OnClickListen
         }
         if (view == opcao03)
         {
+            pontos = pontos+40;
+
             evento_click.TrocarCorBotao3(opcao01,opcao02,opcao03,opcao04);
 
             evento_click.Desabilitar_botao(opcao01,opcao02,opcao03,opcao04,btn_next);
@@ -80,8 +84,14 @@ public class Fragment_Atividade_5 extends Fragment implements View.OnClickListen
         }
         if (view == btn_next)
         {
+            Bundle bundle = new Bundle();
+            Fragment_Atividade_5_1 fragment = new Fragment_Atividade_5_1();
+            bundle.putInt("pontos", pontos);
+
+            fragment.setArguments(bundle);
+
             FragmentTransaction transaction = getFragmentManager().beginTransaction();
-            transaction.replace(R.id.fragment_container_previa_Atividade_05, new Fragment_Atividade_5_1());
+            transaction.replace(R.id.fragment_container_previa_Atividade_05, fragment);
             transaction.commit();
         }
     }

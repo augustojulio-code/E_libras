@@ -19,6 +19,9 @@ public class Fragment_Atividade_2_1 extends Fragment implements View.OnClickList
     Button  opcao01,opcao02,opcao03,opcao04;
     ImageView img_letra,btn_next;
     Manipula_Button evento_click = new Manipula_Button();
+
+    int pontos;
+
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState)
@@ -61,6 +64,8 @@ public class Fragment_Atividade_2_1 extends Fragment implements View.OnClickList
         }
         if (view == opcao02)
         {
+            pontos= pontos+40;
+
             evento_click.TrocarCorBotao2(opcao01,opcao02,opcao03,opcao04);
 
             evento_click.Desabilitar_botao(opcao01,opcao02,opcao03,opcao04,btn_next);
@@ -79,8 +84,14 @@ public class Fragment_Atividade_2_1 extends Fragment implements View.OnClickList
         }
         if (view == btn_next)
         {
+            Bundle bundle = new Bundle();
+            Fragment_Atividade_2_2 fragment = new Fragment_Atividade_2_2();
+            bundle.putInt("pontos", pontos);
+
+            fragment.setArguments(bundle);
+
             FragmentTransaction transaction = getFragmentManager().beginTransaction();
-            transaction.replace(R.id.fragment_container_previa_Atividade_02, new Fragment_Atividade_2_2());
+            transaction.replace(R.id.fragment_container_previa_Atividade_02, fragment);
             transaction.commit();
         }
     }
@@ -90,5 +101,9 @@ public class Fragment_Atividade_2_1 extends Fragment implements View.OnClickList
     {
         super.onStart();
         btn_next.setEnabled(false);
+
+        Bundle bundle_at2 = getArguments();
+
+        pontos = bundle_at2.getInt("pontos");
     }
 }
