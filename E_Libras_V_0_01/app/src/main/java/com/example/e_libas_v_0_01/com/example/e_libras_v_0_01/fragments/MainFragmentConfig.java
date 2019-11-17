@@ -37,8 +37,8 @@ public class MainFragmentConfig extends Fragment
     FirebaseAuth firebaseAuth;
     Button sair;
     TextView web, conta, faq, congiguracao;
-    String[] confMenu = {"Conta","Sobre E-Libras","Configurações","Perguntas Frequentes","Ajuda","Sair"};
-    int[] imagens = {R.mipmap.ic_conta,R.mipmap.ic_web2, R.mipmap.ic_config, R.mipmap.ic_pergunta,R.mipmap.ic_info,R.mipmap.ic_logout};
+    String[] confMenu = {"Conta","Sobre E-Libras","FAQ Comunidade","Ajuda","Sair"};
+    int[] imagens = {R.mipmap.ic_conta,R.mipmap.ic_web2, R.mipmap.ic_pergunta,R.mipmap.ic_info,R.mipmap.ic_logout};
 
     @Nullable
     @Override
@@ -76,13 +76,9 @@ public class MainFragmentConfig extends Fragment
                 }
                 else if (position == 3)
                 {
-                    Toast.makeText(getActivity().getApplicationContext(),"Área em Desenvolvimento",Toast.LENGTH_SHORT).show();
-                }
-                else if (position == 4)
-                {
                     startActivity(new Intent(getActivity(), ActivityAjuda.class));
                 }
-                else if (position == 5)
+                else if (position == 4)
                 {
                     firebaseAuth.signOut();
                     getActivity().finish();
