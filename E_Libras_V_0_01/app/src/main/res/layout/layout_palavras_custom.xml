@@ -37,7 +37,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text=" Memorize os palavras"
+                    android:text="Memorize os gestos"
                     android:textSize="25dp"
                     android:textColor="@color/colorAccent"
                     android:fontFamily="casual"

@@ -11,7 +11,8 @@
         android:roundIcon="@mipmap/elibraslogo"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".Previa_atividade_6"></activity>
+        <activity android:name=".Previa_Atividade_7"></activity>
+        <activity android:name=".Previa_atividade_6" />
         <activity android:name=".ActivityAjuda" />
         <activity android:name=".Previa_Atividade_5" />
         <activity android:name=".Previa_Atividade_4" />

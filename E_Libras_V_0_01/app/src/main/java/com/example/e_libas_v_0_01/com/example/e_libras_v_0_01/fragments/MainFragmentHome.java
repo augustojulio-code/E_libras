@@ -20,6 +20,7 @@ import com.example.e_libas_v_0_01.Previa_Atividade_2;
 import com.example.e_libas_v_0_01.Previa_Atividade_3;
 import com.example.e_libas_v_0_01.Previa_Atividade_4;
 import com.example.e_libas_v_0_01.Previa_Atividade_5;
+import com.example.e_libas_v_0_01.Previa_Atividade_7;
 import com.example.e_libas_v_0_01.Previa_atividade_6;
 import com.example.e_libas_v_0_01.ProfileLogin;
 import com.example.e_libas_v_0_01.R;
@@ -145,6 +146,10 @@ public class MainFragmentHome extends Fragment implements View.OnClickListener
         if (view  == atividade6)
         {
             startActivity(new Intent(getActivity(), Previa_atividade_6.class));
+        }
+        if (view == atividade7)
+        {
+            startActivity(new Intent(getActivity(), Previa_Atividade_7.class));
         }
 
     }
