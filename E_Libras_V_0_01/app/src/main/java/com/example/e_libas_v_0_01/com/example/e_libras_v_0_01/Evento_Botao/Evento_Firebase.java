@@ -1,9 +1,12 @@
 package com.example.e_libas_v_0_01.com.example.e_libras_v_0_01.Evento_Botao;
 
+import android.app.ProgressDialog;
 import android.support.annotation.NonNull;
 import android.util.Log;
 import android.widget.Toast;
 
+import com.example.e_libas_v_0_01.MainFragmentMenu;
+import com.example.e_libas_v_0_01.com.example.e_libras_v_0_01.modelo.Perguntas;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
@@ -18,6 +21,7 @@ public class Evento_Firebase
 {
     DatabaseReference databaseReference;
     FirebaseAuth firebaseAuth;
+    DatabaseReference databaseReference_Perguntas;
 
 
     public void Update_pontos(int retorno,int pontos)
@@ -41,5 +45,16 @@ public class Evento_Firebase
                 }
             }
         });
+    }
+
+
+    public void Inserir_Pergunta(Perguntas pergunta)
+    {
+        firebaseAuth = FirebaseAuth.getInstance();
+
+        final FirebaseUser user = firebaseAuth.getCurrentUser();
+
+
+
     }
 }

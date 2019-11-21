@@ -72,7 +72,8 @@ public class MainFragmentConfig extends Fragment
                 }
                 else if (position == 2)
                 {
-                    Toast.makeText(getActivity().getApplicationContext(),"Área em Desenvolvimento",Toast.LENGTH_SHORT).show();
+                   getFragmentManager().beginTransaction().replace(R.id.fragment_container, new MainFragmentComunity())
+                           .commit();
                 }
                 else if (position == 3)
                 {
