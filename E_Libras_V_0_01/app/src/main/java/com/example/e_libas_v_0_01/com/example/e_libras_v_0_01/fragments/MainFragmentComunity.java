@@ -7,15 +7,18 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.Toast;
 
 import com.example.e_libas_v_0_01.R;
 import com.example.e_libas_v_0_01.com.example.e_libras_v_0_01.Evento_Botao.Evento_Firebase;
 import com.example.e_libas_v_0_01.com.example.e_libras_v_0_01.modelo.Perguntas;
+import com.example.e_libas_v_0_01.com.example.e_libras_v_0_01.modelo.Respostas;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
@@ -36,15 +39,15 @@ public class MainFragmentComunity extends Fragment implements View.OnClickListen
     Button btn_pergunta;
     EditText edt_pergunta;
 
-    FirebaseDatabase firebaseDatabase;
     DatabaseReference databaseReference;
     FirebaseAuth firebaseAuth;
 
-    Evento_Firebase evento_firebase = new Evento_Firebase();
-
+    Perguntas pergunta_selecionada;
 
     private List<Perguntas> listPerguntas = new ArrayList<Perguntas>();
     private ArrayAdapter<Perguntas> arrayAdapter;
+
+    ImageView btn_voltar;
 
     @Nullable
     @Override
@@ -57,11 +60,31 @@ public class MainFragmentComunity extends Fragment implements View.OnClickListen
         lista = view.findViewById(R.id.listperguntas);
         btn_pergunta = view.findViewById(R.id.btnpergunta);
         edt_pergunta = view.findViewById(R.id.txtpergunta);
+        btn_voltar = view.findViewById(R.id.btnvoltar_pergunta);
 
 
         btn_pergunta.setOnClickListener(this);
+        btn_voltar.setOnClickListener(this);
 
+        lista.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long l)
+            {
+                pergunta_selecionada = (Perguntas)parent.getItemAtPosition(position);
+                String pergunta_id = pergunta_selecionada.getPerg_id();
 
+                Bundle bundle = new Bundle();
+
+                bundle.putString("pergunta_id",pergunta_id);
+
+                MainFragmentComuResposta fragment = new MainFragmentComuResposta();
+
+                fragment.setArguments(bundle);
+
+                getFragmentManager().beginTransaction().replace(R.id.fragment_container,fragment)
+                        .commit();
+            }
+        });
 
         return view;
     }
@@ -135,6 +158,11 @@ public class MainFragmentComunity extends Fragment implements View.OnClickListen
             });
 
            edt_pergunta.setText("");
+        }
+        else if (view == btn_voltar)
+        {
+            getFragmentManager().beginTransaction().replace(R.id.fragment_container, new MainFragmentConfig())
+                    .commit();
         }
 
     }

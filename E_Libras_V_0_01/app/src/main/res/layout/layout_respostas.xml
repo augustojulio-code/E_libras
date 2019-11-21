@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical">
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
 
     <LinearLayout
+        android:orientation="horizontal"
         android:id="@+id/layoutranklisttop"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -13,12 +13,11 @@
         >
 
         <ImageView
-            android:id="@+id/btnvoltar_pergunta"
+            android:id="@+id/btnvoltar_resposta"
             android:layout_width="50dp"
             android:layout_height="50dp"
             android:background="@drawable/ic_keyboard_arrow_left_black_24dp"
             android:layout_marginTop="15dp"/>
-
         <TextView
             android:text="Comunidade"
             android:textSize="35dp"
@@ -29,6 +28,8 @@
             android:textColor="#000"/>
     </LinearLayout>
 
+
+
     <LinearLayout
         android:id="@+id/layoutranklist"
         android:layout_width="match_parent"
@@ -37,26 +38,37 @@
         android:layout_below="@+id/layoutranklisttop">
 
 
-
-        <EditText
-            android:id="@+id/txtpergunta"
+        <TextView
+            android:id="@+id/txtviewpergunta"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:hint="Deixe sua pergunta!"
+            android:fontFamily="casual"
+            android:text="pergunta"
+            android:textSize="25dp"
+            android:textColor="#000"
+            />
+
+
+        <EditText
+            android:id="@+id/txtresposta"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:hint="Deixe sua Resposta"
             android:textColorHint="#000"
             android:fontFamily="casual"
             />
 
-       <Button
-           android:id="@+id/btnpergunta"
-           android:layout_width="wrap_content"
-           android:layout_height="wrap_content"
-           android:text="Enviar"
-           android:background="@drawable/button_custom02"
-           android:layout_gravity="center"
-           android:layout_marginTop="15dp"
-           />
+        <Button
+            android:id="@+id/btnresposta"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Enviar"
+            android:background="@drawable/button_custom02"
+            android:layout_gravity="center"
+            android:layout_marginTop="15dp"
+            />
 
     </LinearLayout>
 
@@ -80,7 +92,7 @@
 
 
             <ListView
-                android:id="@+id/listperguntas"
+                android:id="@+id/listrespostas"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_marginTop="15dp" />
