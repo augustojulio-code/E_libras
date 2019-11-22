@@ -1,5 +1,7 @@
 package com.example.e_libas_v_0_01.com.example.e_libras_v_0_01.Fragment_Atividades_01;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -26,10 +28,10 @@ public class Fragment_Atividade_5_10 extends Fragment implements View.OnClickLis
 {
     Button opcao_01,opcao_02,opcao_03,opcao_04;
     ImageView proximo;
-    int pontos;
+    int pontos, acertos, erros;
     Manipula_Button evento_click = new Manipula_Button();
     Evento_Firebase updatescore = new Evento_Firebase();
-    DatabaseReference databaseReference;
+    DatabaseReference databaseReference, databaseReference2;
     FirebaseAuth firebaseAuth;
     int retorno_pontos;
 
@@ -63,6 +65,8 @@ public class Fragment_Atividade_5_10 extends Fragment implements View.OnClickLis
         Bundle bundle_at5 = getArguments();
 
         pontos = bundle_at5.getInt("pontos_at4");
+        acertos = bundle_at5.getInt("acertos");
+        erros = bundle_at5.getInt("erros");
 
         proximo.setEnabled(false);
 
@@ -87,6 +91,8 @@ public class Fragment_Atividade_5_10 extends Fragment implements View.OnClickLis
 
             }
         });
+
+
     }
 
     @Override
@@ -94,22 +100,49 @@ public class Fragment_Atividade_5_10 extends Fragment implements View.OnClickLis
     {
         if (view == proximo)
         {
-            updatescore.Update_pontos(retorno_pontos,pontos);
-            getActivity().finish();
+            StringBuffer buffer = new StringBuffer();
+
+            buffer.append("Acertos: "+acertos+"\n");
+            buffer.append("Erros  : "+erros+"\n");
+
+            AlertDialog.Builder dialog = new AlertDialog.Builder(getActivity());
+
+            dialog.setTitle("Parabéns");
+            dialog.setMessage(buffer);
+            dialog.setIcon(R.mipmap.elibraslogo);
+            dialog.setPositiveButton("OK", new DialogInterface.OnClickListener()
+            {
+                @Override
+                public void onClick(DialogInterface dialogInterface, int i)
+                {
+                    updatescore.Update_pontos(retorno_pontos,pontos);
+                    getActivity().finish();
+
+                    dialogInterface.dismiss();
+                }
+            });
+
+            dialog.show();
+
+
 
         }
         if (view == opcao_01)
         {
+            erros++;
             evento_click.TrocarCorBotao3(opcao_01,opcao_02,opcao_03,opcao_04);
             evento_click.Desabilitar_botao(opcao_01,opcao_02,opcao_03,opcao_04,proximo);
         }
         if (view == opcao_02)
         {
+            erros++;
             evento_click.TrocarCorBotao3(opcao_01,opcao_02,opcao_03,opcao_04);
             evento_click.Desabilitar_botao(opcao_01,opcao_02,opcao_03,opcao_04,proximo);
         }
         if (view == opcao_03)
         {
+            acertos++;
+
             pontos = pontos +40;
 
             evento_click.TrocarCorBotao3(opcao_01,opcao_02,opcao_03,opcao_04);
@@ -117,6 +150,8 @@ public class Fragment_Atividade_5_10 extends Fragment implements View.OnClickLis
         }
         if (view == opcao_04)
         {
+            erros++;
+
             evento_click.TrocarCorBotao3(opcao_01,opcao_02,opcao_03,opcao_04);
             evento_click.Desabilitar_botao(opcao_01,opcao_02,opcao_03,opcao_04,proximo);
         }

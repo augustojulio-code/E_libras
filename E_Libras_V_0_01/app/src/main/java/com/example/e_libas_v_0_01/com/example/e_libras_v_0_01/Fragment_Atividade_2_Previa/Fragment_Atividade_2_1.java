@@ -20,7 +20,7 @@ public class Fragment_Atividade_2_1 extends Fragment implements View.OnClickList
     ImageView img_letra,btn_next;
     Manipula_Button evento_click = new Manipula_Button();
 
-    int pontos;
+    int pontos, acertos,erros;
 
     @Nullable
     @Override
@@ -57,6 +57,8 @@ public class Fragment_Atividade_2_1 extends Fragment implements View.OnClickList
     {
         if (view == opcao01)
         {
+            erros++;
+
             evento_click.TrocarCorBotao2(opcao01,opcao02,opcao03,opcao04);
 
             evento_click.Desabilitar_botao(opcao01,opcao02,opcao03,opcao04,btn_next);
@@ -64,6 +66,7 @@ public class Fragment_Atividade_2_1 extends Fragment implements View.OnClickList
         }
         if (view == opcao02)
         {
+            acertos++;
             pontos= pontos+40;
 
             evento_click.TrocarCorBotao2(opcao01,opcao02,opcao03,opcao04);
@@ -72,12 +75,14 @@ public class Fragment_Atividade_2_1 extends Fragment implements View.OnClickList
         }
         if (view == opcao03)
         {
+            erros++;
             evento_click.TrocarCorBotao2(opcao01,opcao02,opcao03,opcao04);
 
             evento_click.Desabilitar_botao(opcao01,opcao02,opcao03,opcao04,btn_next);
         }
         if (view == opcao04)
         {
+            erros++;
             evento_click.TrocarCorBotao2(opcao01,opcao02,opcao03,opcao04);
 
             evento_click.Desabilitar_botao(opcao01,opcao02,opcao03,opcao04,btn_next);
@@ -87,6 +92,8 @@ public class Fragment_Atividade_2_1 extends Fragment implements View.OnClickList
             Bundle bundle = new Bundle();
             Fragment_Atividade_2_2 fragment = new Fragment_Atividade_2_2();
             bundle.putInt("pontos", pontos);
+            bundle.putInt("acertos",acertos);
+            bundle.putInt("erros",erros);
 
             fragment.setArguments(bundle);
 
@@ -105,5 +112,7 @@ public class Fragment_Atividade_2_1 extends Fragment implements View.OnClickList
         Bundle bundle_at2 = getArguments();
 
         pontos = bundle_at2.getInt("pontos");
+        acertos = bundle_at2.getInt("acertos");
+        erros = bundle_at2.getInt("erros");
     }
 }

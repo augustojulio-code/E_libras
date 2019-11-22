@@ -11,6 +11,7 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import com.example.e_libas_v_0_01.R;
+import com.example.e_libas_v_0_01.com.example.e_libras_v_0_01.Evento_Botao.Evento_Firebase;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
@@ -27,6 +28,9 @@ public class MainFramentDasboard extends Fragment
     FirebaseAuth firebaseAuth;
     int pbPontos;
     String Spontos, Snivel;
+
+    int level;
+
 
     @Nullable
     @Override
@@ -74,17 +78,20 @@ public class MainFramentDasboard extends Fragment
                viewpontos.setText(Spontos+"/1000");
                viewnivel.setText("Nível: "+Snivel);
 
-               if (pbPontos>1000)
+               if (pbPontos>=1000)
                {
+
                    progressBar.clearAnimation();
                    progressBar.setMax(2000);
                    viewpontos.setText(Spontos+"/2000");
+                   viewnivel.setText("Nível: 2");
 
-                   if (pbPontos > 2000)
+                   if (pbPontos >= 2000)
                    {
                        progressBar.clearAnimation();
                        progressBar.setMax(3000);
                        viewpontos.setText(Spontos+"/3000");
+                       viewnivel.setText("Nível: 3");
                    }
                }
 
@@ -97,6 +104,9 @@ public class MainFramentDasboard extends Fragment
 
             }
         });
+
+
+
 
     }
 }

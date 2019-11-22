@@ -21,7 +21,7 @@ public class Fragment_Atividade_3 extends Fragment implements View.OnClickListen
     ImageView img_letra,btn_next;
     Manipula_Button evento_click = new Manipula_Button();
 
-    int pontos =0;
+    int pontos =0,acertos=0,erros=0;
 
     @Nullable
     @Override
@@ -58,6 +58,7 @@ public class Fragment_Atividade_3 extends Fragment implements View.OnClickListen
     {
         if (view == opcao01)
         {
+            erros++;
             evento_click.TrocarCorBotao4(opcao01,opcao02,opcao03,opcao04);
 
             evento_click.Desabilitar_botao(opcao01,opcao02,opcao03,opcao04,btn_next);
@@ -65,18 +66,21 @@ public class Fragment_Atividade_3 extends Fragment implements View.OnClickListen
         }
         if (view == opcao02)
         {
+            erros++;
             evento_click.TrocarCorBotao4(opcao01,opcao02,opcao03,opcao04);
 
             evento_click.Desabilitar_botao(opcao01,opcao02,opcao03,opcao04,btn_next);
         }
         if (view == opcao03)
         {
+            erros++;
             evento_click.TrocarCorBotao4(opcao01,opcao02,opcao03,opcao04);
 
             evento_click.Desabilitar_botao(opcao01,opcao02,opcao03,opcao04,btn_next);
         }
         if (view == opcao04)
         {
+            acertos++;
             pontos = pontos+40;
 
             evento_click.TrocarCorBotao4(opcao01,opcao02,opcao03,opcao04);
@@ -88,6 +92,8 @@ public class Fragment_Atividade_3 extends Fragment implements View.OnClickListen
             Bundle bundle = new Bundle();
             Fragment_Atividade_3_1 fragment = new Fragment_Atividade_3_1();
             bundle.putInt("pontos", pontos);
+            bundle.putInt("acertos",acertos);
+            bundle.putInt("erros",erros);
 
             fragment.setArguments(bundle);
 

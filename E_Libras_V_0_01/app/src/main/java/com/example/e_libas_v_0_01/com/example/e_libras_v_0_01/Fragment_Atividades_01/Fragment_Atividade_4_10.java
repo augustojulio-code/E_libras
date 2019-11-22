@@ -20,7 +20,7 @@ public class Fragment_Atividade_4_10 extends Fragment implements View.OnClickLis
 
     Button opcao_01,opcao_02,opcao_03,opcao_04;
     ImageView proximo;
-    int pontos;
+    int pontos, acertos,erros;
     Manipula_Button evento_click = new Manipula_Button();
 
     @Nullable
@@ -54,6 +54,8 @@ public class Fragment_Atividade_4_10 extends Fragment implements View.OnClickLis
         Bundle bundle_at4 = getArguments();
 
         pontos = bundle_at4.getInt("pontos_at3");
+        acertos = bundle_at4.getInt("acertos");
+        erros = bundle_at4.getInt("erros");
 
         proximo.setEnabled(false);
 
@@ -67,6 +69,8 @@ public class Fragment_Atividade_4_10 extends Fragment implements View.OnClickLis
             Bundle bundle_at4_proximo= new Bundle();
 
             bundle_at4_proximo.putInt("pontos_at4", pontos);
+            bundle_at4_proximo.putInt("acertos",acertos);
+            bundle_at4_proximo.putInt("erros",erros);
 
             Fragment_Atividade_5_10 fragmentAtividade510 = new Fragment_Atividade_5_10();
             fragmentAtividade510.setArguments(bundle_at4_proximo);
@@ -77,11 +81,14 @@ public class Fragment_Atividade_4_10 extends Fragment implements View.OnClickLis
         }
         if (view == opcao_01)
         {
+            erros++;
             evento_click.TrocarCorBotao2(opcao_01,opcao_02,opcao_03,opcao_04);
             evento_click.Desabilitar_botao(opcao_01,opcao_02,opcao_03,opcao_04,proximo);
         }
         if (view == opcao_02)
         {
+            acertos++;
+
             pontos = pontos+ 40;
 
             evento_click.TrocarCorBotao2(opcao_01,opcao_02,opcao_03,opcao_04);
@@ -89,11 +96,14 @@ public class Fragment_Atividade_4_10 extends Fragment implements View.OnClickLis
         }
         if (view == opcao_03)
         {
+            erros++;
             evento_click.TrocarCorBotao2(opcao_01,opcao_02,opcao_03,opcao_04);
             evento_click.Desabilitar_botao(opcao_01,opcao_02,opcao_03,opcao_04,proximo);
         }
         if (view == opcao_04)
         {
+            erros++;
+
             evento_click.TrocarCorBotao2(opcao_01,opcao_02,opcao_03,opcao_04);
             evento_click.Desabilitar_botao(opcao_01,opcao_02,opcao_03,opcao_04,proximo);
         }

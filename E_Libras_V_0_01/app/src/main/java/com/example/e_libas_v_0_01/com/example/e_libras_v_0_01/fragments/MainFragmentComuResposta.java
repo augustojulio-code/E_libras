@@ -41,17 +41,15 @@ public class MainFragmentComuResposta extends Fragment implements View.OnClickLi
     EditText edt_resposta;
     ImageView btn_voltar;
 
-    private List<Perguntas> listperguntas;
-
-    String pergunta_id, pergunta_retorno;
+    String pergunta_id;
 
     DatabaseReference databaseReference;
     FirebaseAuth firebaseAuth;
-    Query query;
+    Query query, query_respostas;
 
-    Perguntas pppp;
-    //private List<Perguntas> listPerguntas = new ArrayList<Perguntas>();
-    //private ArrayAdapter<Perguntas> arrayAdapter;
+
+    private List<Respostas> respostasArrayList = new ArrayList<Respostas>();
+    private ArrayAdapter<Respostas> arrayAdapter;
 
     @Nullable
     @Override
@@ -64,6 +62,7 @@ public class MainFragmentComuResposta extends Fragment implements View.OnClickLi
         btn_voltar = view.findViewById(R.id.btnvoltar_resposta);
         edt_resposta = view.findViewById(R.id.txtresposta);
         btn_resposta = view.findViewById(R.id.btnresposta);
+        listareposta = view.findViewById(R.id.listrespostas);
 
         btn_voltar.setOnClickListener(this);
         btn_resposta.setOnClickListener(this);
@@ -89,6 +88,10 @@ public class MainFragmentComuResposta extends Fragment implements View.OnClickLi
         databaseReference = FirebaseDatabase.getInstance().getReference("Respostas");
 
 
+        query_respostas = FirebaseDatabase.getInstance().getReference("Respostas").orderByChild("pergunta_id")
+        .equalTo(pergunta_id);
+
+
         query = FirebaseDatabase.getInstance().getReference("Perguntas").orderByChild("perg_id")
         .equalTo(pergunta_id);
 
@@ -97,6 +100,10 @@ public class MainFragmentComuResposta extends Fragment implements View.OnClickLi
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot)
             {
+                if(!dataSnapshot.exists())
+                {
+                    return;
+                }
                 for (DataSnapshot snapshot : dataSnapshot.getChildren())
                 {
                     Perguntas p = snapshot.getValue(Perguntas.class);
@@ -111,7 +118,41 @@ public class MainFragmentComuResposta extends Fragment implements View.OnClickLi
             }
         };
 
+        ValueEventListener valueEventListener1 = new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot)
+            {
+                if (!dataSnapshot.exists())
+                {
+                    return;
+                }
+
+                for (DataSnapshot objsnapshot: dataSnapshot.getChildren())
+                {
+                    Respostas respostas = objsnapshot.getValue(Respostas.class);
+
+                    respostasArrayList.add(respostas);
+
+                }
+                arrayAdapter = new ArrayAdapter<Respostas>(getActivity(),android.R.layout.simple_list_item_1,respostasArrayList);
+
+                listareposta.setAdapter(arrayAdapter);
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError)
+            {
+
+            }
+        };
+
         query.addListenerForSingleValueEvent(valueEventListener);
+
+        query_respostas.addListenerForSingleValueEvent(valueEventListener1);
+
+
+
+
 
 
     }

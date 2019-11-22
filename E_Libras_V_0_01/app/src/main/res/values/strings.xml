@@ -5,8 +5,8 @@
     <string name="title_dashboard">Dashboard</string>
     <string name="title_notifications">Notifications</string>
     <string name="title_ranking">Ranking</string>
-    <string name="title_config">Configurações</string>
-    <string name="title_info">Informações</string>
+    <string name="title_config">Opções</string>
+    <string name="title_info">Alfabeto</string>
 
     <string name="info_ajuda">
         Se ainda tiver duvidas, mande um email para: <a href="elibras@gmail.com">elibras@gmail.com</a>

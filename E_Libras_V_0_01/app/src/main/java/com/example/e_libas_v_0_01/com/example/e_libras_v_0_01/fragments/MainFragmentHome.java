@@ -38,7 +38,7 @@ public class MainFragmentHome extends Fragment implements View.OnClickListener
 
     FirebaseAuth firebaseAuth;
 
-    DatabaseReference reference;
+    DatabaseReference reference, databaseReference;
 
     TextView nickname;
 
@@ -55,7 +55,7 @@ public class MainFragmentHome extends Fragment implements View.OnClickListener
 
         nickname = (TextView) view.findViewById(R.id.txthomeusuario);
 
-        Button botao = (Button) view.findViewById(R.id.botao123);
+        //Button botao = (Button) view.findViewById(R.id.botao123);
 
 
          atividade = view.findViewById(R.id.botao_atividade);
@@ -67,14 +67,14 @@ public class MainFragmentHome extends Fragment implements View.OnClickListener
          atividade7 = view.findViewById(R.id.botao_atividade_7);
 
 
-        botao.setOnClickListener(new View.OnClickListener()
+        /*botao.setOnClickListener(new View.OnClickListener()
         {
             @Override
             public void onClick(View view)
             {
                 startActivity(new Intent(getActivity(), ProfileLogin.class));
             }
-        });
+        });*/
 
         atividade.setOnClickListener(this);
         atividade2.setOnClickListener(this);
@@ -93,6 +93,8 @@ public class MainFragmentHome extends Fragment implements View.OnClickListener
         super.onStart();
 
         final FirebaseUser user = firebaseAuth.getCurrentUser();
+
+        databaseReference = FirebaseDatabase.getInstance().getReference("Userscore").child(user.getUid());
 
         reference = FirebaseDatabase.getInstance().getReference("Usuario").child(user.getUid());
 
@@ -115,6 +117,33 @@ public class MainFragmentHome extends Fragment implements View.OnClickListener
             @Override
             public void onCancelled(@NonNull DatabaseError databaseError)
             {
+
+            }
+        });
+
+        databaseReference.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot)
+            {
+
+                if (!dataSnapshot.exists())
+                {
+                    return;
+                }
+
+                String pontos = dataSnapshot.child("pontos").getValue().toString();
+                int int_pontos = Integer.parseInt(pontos);
+
+                if (int_pontos< 1000)
+                {
+                    atividade6.setEnabled(false);
+                    atividade7.setEnabled(false);
+                }
+
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
 
             }
         });

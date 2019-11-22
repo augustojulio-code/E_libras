@@ -21,7 +21,7 @@ import com.example.e_libas_v_0_01.com.example.e_libras_v_0_01.Evento_Botao.Manip
 public class Fragment_Atividade_1_10 extends Fragment implements View.OnClickListener
 {
     Button opcao_01,opcao_02,opcao_03,opcao_04;
-    int pontos = 0;
+    int pontos = 0, acertos =0, erros=0;
     ImageView proximo;
     Manipula_Button evento_click = new Manipula_Button();
 
@@ -56,6 +56,8 @@ public class Fragment_Atividade_1_10 extends Fragment implements View.OnClickLis
             Fragment_Atividade_2_10  fragment2 = new Fragment_Atividade_2_10();
             fragment2.setArguments(bundle);
 
+            bundle.putInt("acertos",acertos);
+            bundle.putInt("erros",erros);
             bundle.putInt("pontos", pontos);
             FragmentTransaction transaction = getFragmentManager().beginTransaction();
             transaction.replace(R.id.fragment_container_Atividade_01,fragment2);
@@ -65,6 +67,7 @@ public class Fragment_Atividade_1_10 extends Fragment implements View.OnClickLis
         }
         if (view == opcao_01)
         {
+            erros++;
             // Setando as cores com click
 
             evento_click.TrocarCorBotao4(opcao_01,opcao_02,opcao_03,opcao_04);
@@ -76,7 +79,7 @@ public class Fragment_Atividade_1_10 extends Fragment implements View.OnClickLis
         }
         if (view == opcao_02)
         {
-
+            erros++;
             evento_click.TrocarCorBotao4(opcao_01,opcao_02,opcao_03,opcao_04);
 
             evento_click.Desabilitar_botao(opcao_01,opcao_02,opcao_03,opcao_04,proximo);
@@ -85,6 +88,7 @@ public class Fragment_Atividade_1_10 extends Fragment implements View.OnClickLis
         }
         if (view == opcao_03)
         {
+            erros++;
 
             evento_click.TrocarCorBotao4(opcao_01,opcao_02,opcao_03,opcao_04);
 
@@ -93,6 +97,8 @@ public class Fragment_Atividade_1_10 extends Fragment implements View.OnClickLis
         }
         if (view== opcao_04)
         {
+            acertos++;
+
             pontos = pontos + 40;
 
             evento_click.TrocarCorBotao4(opcao_01,opcao_02,opcao_03,opcao_04);

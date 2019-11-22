@@ -1,5 +1,6 @@
 package com.example.e_libas_v_0_01;
 
+import android.content.Context;
 import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
@@ -10,6 +11,7 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.e_libas_v_0_01.com.example.e_libras_v_0_01.Evento_Botao.Manipula_Button;
 import com.example.e_libas_v_0_01.com.example.e_libras_v_0_01.modelo.Usuario;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -25,6 +27,7 @@ import java.util.UUID;
 public class ProfileLogin extends AppCompatActivity implements View.OnClickListener
 {
     private FirebaseAuth firebaseAuth;
+    Context context;
 
     private EditText adicionarpontos;
     private TextView usuarioemail;
@@ -119,6 +122,8 @@ public class ProfileLogin extends AppCompatActivity implements View.OnClickListe
             }
         });
 
+        context =ProfileLogin.this;
+
 
     }
 
@@ -129,9 +134,13 @@ public class ProfileLogin extends AppCompatActivity implements View.OnClickListe
     {
         if (view == logout)
         {
-            firebaseAuth.signOut();
+            /*firebaseAuth.signOut();
             finish();
-            startActivity(new Intent(this,LoginActivity.class));
+            startActivity(new Intent(this,LoginActivity.class));*/
+
+            /*Manipula_Button m = new Manipula_Button();
+
+            m.Dialog(context);*/
         }
         if (view == lista)
         {
