@@ -1,5 +1,7 @@
 package com.example.e_libas_v_0_01.com.example.e_libras_v_0_01.Fragment_Atividade_6_Previa;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -25,7 +27,7 @@ import com.google.firebase.database.ValueEventListener;
 
 public class Fragment_Atividade_6_4 extends Fragment implements View.OnClickListener
 {
-    int pontos;
+    int pontos, erros,acertos;
     Button opcao01,opcao02,opcao03,opcao04;
     ImageView gif_palavra,btn_next;
     Manipula_Button evento_click = new Manipula_Button();
@@ -70,6 +72,8 @@ public class Fragment_Atividade_6_4 extends Fragment implements View.OnClickList
     {
         if (view == opcao01)
         {
+            erros++;
+
             evento_click.TrocarCorBotao3(opcao01,opcao02,opcao03,opcao04);
 
             evento_click.Desabilitar_botao(opcao01,opcao02,opcao03,opcao04,btn_next);
@@ -77,7 +81,7 @@ public class Fragment_Atividade_6_4 extends Fragment implements View.OnClickList
         }
         if (view == opcao02)
         {
-
+            erros++;
 
             evento_click.TrocarCorBotao3(opcao01,opcao02,opcao03,opcao04);
 
@@ -85,6 +89,8 @@ public class Fragment_Atividade_6_4 extends Fragment implements View.OnClickList
         }
         if (view == opcao03)
         {
+            acertos++;
+
             pontos = pontos+40;
 
             evento_click.TrocarCorBotao3(opcao01,opcao02,opcao03,opcao04);
@@ -93,7 +99,7 @@ public class Fragment_Atividade_6_4 extends Fragment implements View.OnClickList
         }
         if (view == opcao04)
         {
-
+            erros++;
 
             evento_click.TrocarCorBotao3(opcao01,opcao02,opcao03,opcao04);
 
@@ -101,8 +107,29 @@ public class Fragment_Atividade_6_4 extends Fragment implements View.OnClickList
         }
         if (view == btn_next)
         {
-           updatescore.Update_pontos(retorno_pontos,pontos);
-           getActivity().finish();
+            StringBuffer buffer = new StringBuffer();
+
+            buffer.append("Acertos: "+acertos+"\n");
+            buffer.append("Erros  : "+erros+"\n");
+
+            AlertDialog.Builder dialog = new AlertDialog.Builder(getActivity());
+
+            dialog.setTitle("Parabéns");
+            dialog.setMessage(buffer);
+            dialog.setIcon(R.mipmap.elibraslogo);
+            dialog.setPositiveButton("OK", new DialogInterface.OnClickListener()
+            {
+                @Override
+                public void onClick(DialogInterface dialogInterface, int i)
+                {
+                    updatescore.Update_pontos(retorno_pontos,pontos);
+                    getActivity().finish();
+
+                    dialogInterface.dismiss();
+                }
+            });
+
+            dialog.show();
         }
     }
 
@@ -115,6 +142,9 @@ public class Fragment_Atividade_6_4 extends Fragment implements View.OnClickList
         Bundle bundle_at5 = getArguments();
 
         pontos = bundle_at5.getInt("pontos");
+        acertos = bundle_at5.getInt("acertos");
+        erros = bundle_at5.getInt("erros");
+
 
         firebaseAuth = FirebaseAuth.getInstance();
         final FirebaseUser user = firebaseAuth.getCurrentUser();
