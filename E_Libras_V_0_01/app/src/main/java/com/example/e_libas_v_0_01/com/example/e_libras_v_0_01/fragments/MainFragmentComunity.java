@@ -86,6 +86,8 @@ public class MainFragmentComunity extends Fragment implements View.OnClickListen
             }
         });
 
+        arrayAdapter = new ArrayAdapter<Perguntas>(getActivity(),android.R.layout.simple_list_item_1,listPerguntas);
+
         return view;
     }
 
@@ -119,7 +121,7 @@ public class MainFragmentComunity extends Fragment implements View.OnClickListen
                     listPerguntas.add(p);
                 }
 
-                arrayAdapter = new ArrayAdapter<Perguntas>(getActivity(),android.R.layout.simple_list_item_1,listPerguntas);
+
 
                 lista.setAdapter(arrayAdapter);
             }

@@ -68,6 +68,9 @@ public class MainFragmentComuResposta extends Fragment implements View.OnClickLi
         btn_resposta.setOnClickListener(this);
 
 
+        arrayAdapter = new ArrayAdapter<Respostas>(getActivity(),android.R.layout.simple_list_item_1,respostasArrayList);
+
+
 
         return view;
     }
@@ -134,7 +137,6 @@ public class MainFragmentComuResposta extends Fragment implements View.OnClickLi
                     respostasArrayList.add(respostas);
 
                 }
-                arrayAdapter = new ArrayAdapter<Respostas>(getActivity(),android.R.layout.simple_list_item_1,respostasArrayList);
 
                 listareposta.setAdapter(arrayAdapter);
             }
