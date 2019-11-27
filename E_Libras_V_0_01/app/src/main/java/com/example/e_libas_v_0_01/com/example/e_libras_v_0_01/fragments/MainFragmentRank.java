@@ -72,6 +72,8 @@ public class MainFragmentRank extends Fragment
 
         adapter = new listaAdapter(getActivity().getApplicationContext(),arrayList,medalhasimgs);
 
+        listView.setAdapter(adapter);
+
 
         return view;
 
@@ -99,7 +101,8 @@ public class MainFragmentRank extends Fragment
 
                 //listView.setAdapter(arrayAdapter);
                 adapter.notifyDataSetChanged();
-                listView.setAdapter(adapter);
+
+
             }
 
             @Override
